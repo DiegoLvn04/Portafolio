@@ -1,132 +1,79 @@
+// src/components/Habilidades/Habilidades.jsx
 import './Habilidades.css';
 
 const Habilidades = () => {
-  const skillsData = [
+  // Datos categorizados y optimizados
+  const categorias = [
     {
-      id: 1,
-      titulo: "Power BI",
-      descripcion: "DAX, Data Modeling, Power Query, Governance.",
-      nivel: "Avanzado",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
+      id: "frontend",
+      titulo: "Frontend & Diseño",
+      skills: [
+        { nombre: "React", nivel: "Avanzado", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+        { nombre: "JavaScript", nivel: "Avanzado", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+        { nombre: "CSS Grid / Flexbox", nivel: "Experto", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+        { nombre: "Bootstrap", nivel: "Avanzado", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" }
+      ]
     },
     {
-      id: 2,
-      titulo: "SQL Server / MySQL / PostGreSQL / Oracle",
-      descripcion: "SQL, T-SQL, Optimización, Procedimientos Almacenados.",
-      nivel: "Avanzado",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
+      id: "backend",
+      titulo: "Backend & Móvil",
+      skills: [
+        { nombre: "Java", nivel: "Avanzado", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+        { nombre: "Python", nivel: "Avanzado", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+        { nombre: "Laravel", nivel: "Intermedio", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" },
+        { nombre: "Android Studio", nivel: "Intermedio", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" }
+      ]
     },
     {
-      id: 3,
-      titulo: "Python for Data Analyst",
-      descripcion: "Pandas, NumPy, Matplotlib, Automatización, Keras.",
-      nivel: "Avanzado",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
+      id: "database",
+      titulo: "Bases de Datos",
+      skills: [
+        { nombre: "Oracle DB", nivel: "Certificado", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" },
+        { nombre: "MySQL", nivel: "Avanzado", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+        { nombre: "PostgreSQL", nivel: "Avanzado", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+        { nombre: "SQL Server", nivel: "Intermedio", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" }
+      ]
     },
     {
-      id: 4,
-      titulo: "Excel / VBA",
-      descripcion: "Macros, Power Pivot, Power Query, Pivot Tables, Dashboards complejos.",
-      nivel: "Experto",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
-    },
-    {
-      id: 5,
-      titulo: "Laravel",
-      descripcion: "Backend Developer",
-      nivel: "Avanzado",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
-    },
-    {
-      id: 6,
-      titulo: "React",
-      descripcion: "Construcción de Interfaces de Usuario Modernas a partir de Componentes",
-      nivel: "Aprendizaje Activo",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
-    },
-    {
-      id: 7,
-      titulo: "Angular",
-      descripcion: "Construcción de aplicaciones web de una sola página.",
-      nivel: "Aprendizaje Activo",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
-    },
-    {
-      id: 8,
-      titulo: "Git",
-      descripcion: "Sistema de Control de Versiones.",
-      nivel: "Aprendizaje Activo",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
-    },
-    {
-      id: 9,
-      titulo: "GitHub",
-      descripcion: "Repositorio en la nube.",
-      nivel: "Aprendizaje Activo",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
-    },
-    {
-      id: 10,
-      titulo: "JavaScript",
-      descripcion: "Lenguaje de programación interpretado, dialecto del estándar ECMAScript.",
-      nivel: "Aprendizaje Activo",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
-    },
-    {
-      id: 11,
-      titulo: "Grid",
-      descripcion: "Construcción de rejillas responsivas.",
-      nivel: "Aprendizaje Activo",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
-    },
-    {
-      id: 12,
-      titulo: "Flexbox",
-      descripcion: "Método de diseño de página unidimensional para compaginar elementos en filas o columnas.",
-      nivel: "Aprendizaje Activo",
-      botonTexto: "VER CERTIFICADO",
-      estado: "completado"
+      id: "tools",
+      titulo: "Herramientas & BI",
+      skills: [
+        { nombre: "Git & GitHub", nivel: "Avanzado", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+        { nombre: "Power BI", nivel: "Avanzado", icono: "https://raw.githubusercontent.com/microsoft/PowerBI-Icons/main/SVG/Power-BI.svg" },
+        { nombre: "Excel / VBA", nivel: "Experto", icono: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" }
+      ]
     }
   ];
 
   return (
     <section id="tech-stack" className="habilidades-section">
       <div className="habilidades-container">
-        <div className="habilidades-grid">
-          {skillsData.map((skill) => (
-            <div key={skill.id} className="skill-card">
-              <div className="skill-header">
-                <div className="skill-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-cyan">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="3" y1="9" x2="21" y2="9"></line>
-                    <line x1="9" y1="21" x2="9" y2="9"></line>
-                  </svg>
-                </div>
-                <span className={`skill-badge ${skill.estado === 'proceso' ? 'badge-yellow' : 'badge-green'}`}>
-                  {skill.botonTexto}
-                </span>
-              </div>
+        
+        <h2 className="section-title text-center">
+          Habilidades <span className="text-gradient">Técnicas</span>
+        </h2>
 
-              <div className="skill-body">
-                <h3 className="skill-title">{skill.titulo}</h3>
-                <p className="skill-desc">{skill.descripcion}</p>
-                <span className="skill-level">{skill.nivel}</span>
+        {/* Mapeo de Categorías */}
+        <div className="categorias-grid">
+          {categorias.map((cat) => (
+            <div key={cat.id} className="categoria-card">
+              <h3 className="categoria-titulo">{cat.titulo}</h3>
+              
+              <div className="skills-compact-grid">
+                {cat.skills.map((skill, index) => (
+                  <div key={index} className="skill-item">
+                    <img src={skill.icono} alt={skill.nombre} className="skill-icon-img" />
+                    <div className="skill-info">
+                      <span className="skill-name">{skill.nombre}</span>
+                      <span className="skill-level">{skill.nivel}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
