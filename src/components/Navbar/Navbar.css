@@ -1,80 +1,187 @@
 /* src/components/Navbar/Navbar.css */
-.navbar {
+
+/* HEADER FLOTANTE CON GLASSMORPHISM */
+.navbar-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 1.2rem 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-header.scrolled {
+  padding: 0.8rem 0;
+  background: rgba(7, 9, 14, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 5%;
-  background-color: #0b0f19;
-  color: #ffffff;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* LOGO TIPO CÓDIGO */
 .navbar-logo {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.03);
+}
+
+.logo-brackets {
+  color: #06b6d4; /* Cyan */
+  font-family: monospace;
   font-weight: 700;
-  cursor: pointer;
-  letter-spacing: 1px;
 }
 
-.text-cyan {
-  color: #00d8ff;
+.logo-name {
+  color: #ffffff;
 }
 
+.logo-dot {
+  background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+/* ENLACES DE NAVEGACIÓN */
 .navbar-links {
   display: flex;
-  gap: 2.5rem;
+  align-items: center;
+  gap: 2rem;
+  background: rgba(17, 24, 39, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 1.2rem;
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
 }
 
 .navbar-links a {
-  color: #a1aab2;
+  color: #94a3b8;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.4rem 0.2rem;
 }
 
-.navbar-links a:hover {
+.navbar-links a:not(.nav-btn-cta):hover {
   color: #ffffff;
 }
 
+/* Línea animada inferior al pasar el mouse */
+.navbar-links a:not(.nav-btn-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.navbar-links a:not(.nav-btn-cta):hover::after {
+  width: 80%;
+}
+
+/* BOTÓN DE CONTACTO DESTACADO (CTA) */
+.nav-btn-cta {
+  background: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+  color: #ffffff !important;
+  padding: 0.45rem 1.2rem !important;
+  border-radius: 20px;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease !important;
+}
+
+.nav-btn-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(6, 182, 212, 0.45);
+}
+
+/* MENÚ HAMBURGUESA MÓVIL */
 .navbar-toggle {
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 6px;
+  gap: 5px;
+  z-index: 1001;
 }
 
 .bar {
-  width: 25px;
-  height: 3px;
+  width: 24px;
+  height: 2px;
   background-color: #ffffff;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
-@media (max-width: 768px) {
+/* Animación a 'X' del menú hamburguesa */
+.navbar-toggle.toggle-active .bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar-toggle.toggle-active .bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar-toggle.toggle-active .bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* RESPONSIVIDAD */
+@media (max-width: 868px) {
   .navbar-toggle {
     display: flex;
   }
 
   .navbar-links {
-    display: none;
+    display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background-color: #0b0f19;
-    padding: 2rem 0;
-    text-align: center;
-    gap: 2rem;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    max-width: 300px;
+    height: 100vh;
+    background: #0d111a;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0;
+    padding: 6rem 2rem 2rem 2rem;
+    gap: 1.8rem;
+    align-items: flex-start;
+    transition: right 0.4s ease;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
   }
 
   .navbar-links.open {
-    display: flex;
+    right: 0;
+  }
+
+  .nav-btn-cta {
+    width: 100%;
+    text-align: center;
   }
 }
