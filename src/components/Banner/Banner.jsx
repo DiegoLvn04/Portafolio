@@ -1,6 +1,6 @@
 // src/components/Banner/Banner.jsx
 import './Banner.css';
-import miFoto from '../../assets/miFoto.png';
+import miFoto from '../../assets/mifoto.png';
 
 const Banner = () => {
   return (
